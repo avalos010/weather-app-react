@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+footer {
+    position: absolute;
+    background: grey;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    bottom: 0;
+}
