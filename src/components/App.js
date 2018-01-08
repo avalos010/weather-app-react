@@ -11,7 +11,7 @@ class App extends Component {
     temp: 0
   }
 getWeather = () => {
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`;
     let promiseResponse = fetch(url).then(response => response.json());
     return promiseResponse.then(result =>{ 
       this.setState({
