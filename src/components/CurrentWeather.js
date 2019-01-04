@@ -10,12 +10,10 @@ class CurrentWeather extends Component {
     title: '',
     description: '',
     temp: 0,
-    lat: null,
-    long: null
   }
-  
-getWeather = () => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.long}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`;
+
+  componentDidMount = () => {
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.props.lat}&lon=${this.props.lon}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`;
     let promiseResponse = fetch(url).then(response => response.json());
     return promiseResponse.then(result =>{
       this.setState({
@@ -26,38 +24,6 @@ getWeather = () => {
       })
     });
   }
-
-  handleLocationUpdate = (e) => {
-    e.preventDefault();
-    let loc = e.target[0].value;
-    if(loc.length > 0) {
-    this.setState({location: loc})
-    setTimeout(this.getWeather,1);
-      e.target[0].value = '';
-    }
-
-  }
-  componentDidMount = () => {
-    if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.handleLocationSuccess, this.handleLocatioError)
-    }
-
-  }
-
-  handleLocationSuccess = (position) => {
-    const {latitude, longitude} = position.coords;
-    this.setState({
-      lat: latitude,
-      long: longitude
-    })
-
-    this.getWeather()
-  }
-
-  handleLocatioError = () => {
-    alert('Please allow location')
-  }
-
 
 render() {
     const {temp,title,thumbnail,description} = this.state;
