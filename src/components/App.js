@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
+
 import '../App.css';
-import Navigation from './Navigation.js'
-import CurrentWeather from './CurrentWeather.js'
-import Input from './input.js';
+import CurrentWeather from './CurrentWeather'
 
 class App extends Component {
   state = {
@@ -31,10 +30,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navigation />
+      <Fragment>
         {this.state.lat && <CurrentWeather lon={this.state.lon} lat={this.state.lat}/>}
-      </div>
+      </Fragment>
     );
   }
 }
