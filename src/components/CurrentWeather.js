@@ -27,13 +27,15 @@ class CurrentWeather extends Component {
 
 render() {
     const {temp,title,thumbnail,description} = this.state;
-    return (<div className="jumbotron  text-center">
+    return (<div className="jumbotron  text-center" style={{height: '95vh'}}>
     <h2 className="display-4 mt-3">Current Weather</h2>
     <div className="container">
-    <div className="card">
+    <div className="card p-3">
     <p className="lead font-weight-bold">{title}</p>
-  <img style={{width: 100}} src={`http://openweathermap.org/img/w/${thumbnail}.png`} className="mx-auto card-img-top" alt={description}/>
-  <div className="card-body">
+    <div className="m-3">
+  <img style={{width: 80}} src={`http://openweathermap.org/img/w/${thumbnail}.png`} className="mx-auto card-img-top" alt={description}/>
+  </div>
+  <div className="card-body ">
     <p className="card-text">
       <span className="font-weight-bold">{temp}°F</span>
     <br/>{description}</p>
