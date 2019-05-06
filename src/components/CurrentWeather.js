@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { lat, lon } from "../getCoordinates";
+import getLocation from "../getCoordinates";
 import { Link } from "react-router-dom";
 
 class CurrentWeather extends Component {
@@ -8,22 +8,38 @@ class CurrentWeather extends Component {
     thumbnail: "",
     title: "",
     description: "",
-    temp: 0
+    temp: 0,
+    lon: null,
+    lat: null
   };
 
   componentDidMount = () => {
-    setTimeout(async () => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`;
-      const response = await fetch(url);
-      const result = await response.json();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          this.setState({ lat: latitude, lon: longitude });
+          this.handleWaitonLocation();
+        },
+        () => alert("Please Allow Location")
+      );
+    }
+  };
 
-      this.setState({
-        title: result.name,
-        thumbnail: result.weather[0].icon,
-        description: result.weather[0].description,
-        temp: Math.floor(result.main.temp)
-      });
-    }, 0);
+  handleWaitonLocation = async () => {
+    const { lon, lat } = this.state;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`;
+    const response = await fetch(url);
+    const result = await response.json();
+
+    result
+      ? this.setState({
+          title: result.name,
+          thumbnail: result.weather[0].icon,
+          description: result.weather[0].description,
+          temp: Math.floor(result.main.temp)
+        })
+      : console.log("loading");
   };
 
   render() {

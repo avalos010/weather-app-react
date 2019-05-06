@@ -7,21 +7,33 @@ import { Link } from "react-router-dom";
 
 const FiveDay = props => {
   const [forecastData, setForecastData] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleLoadForecast = async () => {
-    if (lat) {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`
-      );
-      const json = await response.json();
-      setForecastData(json.list);
-      console.log(json.list);
-    }
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=601eae66287223be5956bb277ffa86d5&units=imperial`
+    );
+    const json = await response.json();
+    setForecastData(json.list);
+    console.log(json.list);
   };
 
   useEffect(() => {
-    handleLoadForecast();
-  }, []);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          setLat(latitude);
+          setLon(longitude);
+          handleLoadForecast();
+        },
+        () => alert("Please Allow Location")
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lat, lon]);
 
   return (
     <div className="forecast_parent">
