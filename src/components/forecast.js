@@ -13,7 +13,7 @@ const Forecast = ({ forecastData }) => (
           <div className="forecast_description">
             <p className="forecast_description_text">{w.weather[0].main}</p>
             <img
-              src={`http://openweathermap.org/img/w/${w.weather[0].icon}.png`}
+              src={`https://openweathermap.org/img/w/${w.weather[0].icon}.png`}
               className="mx-auto card-img-top"
               alt={w.weather[0].description}
             />
