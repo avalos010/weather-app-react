@@ -5,7 +5,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename=".">
     <App />
   </BrowserRouter>,
   document.getElementById("root")
