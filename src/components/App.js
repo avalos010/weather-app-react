@@ -7,8 +7,8 @@ import FiveDay from "./fiveDay";
 
 const App = () => (
   <Switch>
-    <Route exact path="/" render={() => <CurrentWeather />} />
-    <Route exact path="/forecast" render={() => <FiveDay />} />
+    <Route exact path="/" component={CurrentWeather} />
+    <Route exact path="/forecast" component={FiveDay} />
   </Switch>
 );
 
