@@ -1,7 +1,7 @@
-import React, { isValidElement, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useCurrentWeather from "../hooks/useCurrentWeather";
-import WeatherInfo from "./weatherInfo";
+import WeatherInfo from "./WeatherInfo";
 
 function CurrentWeather() {
   const [weather, setWeather] = useState(null);

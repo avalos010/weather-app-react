@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/forecast.css";
-import Forecast from "../components/forecast";
+import Forecast from "./Forecast";
 import Spinner from "./Spinner";
 import { Link, useLocation } from "react-router-dom";
 import useForecast from "../hooks/useForecast";
