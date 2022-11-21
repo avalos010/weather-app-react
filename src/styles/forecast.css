@@ -59,3 +59,7 @@ text-align: center;;
 .current-weather-btn {
     font-size: 20px;
 }
+
+.loader-spinner > div {
+    justify-content: center;
+}

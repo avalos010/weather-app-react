@@ -1,25 +1,25 @@
 import React from "react";
 
-function WeatherInfo({ title, thumbnail, temp, description }) {
+function WeatherInfo(weather) {
   return (
     <div className="container">
       <div className="card p-3">
-        <p className="lead font-weight-bold">{title}</p>
+        <p className="lead font-weight-bold">{weather.name}</p>
         <div className="m-3">
-          {thumbnail && (
+          {weather && (
             <img
               style={{ width: 80 }}
-              src={`https://openweathermap.org/img/w/${thumbnail}.png`}
+              src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
               className="mx-auto card-img-top"
-              alt={description}
+              alt={weather.weather.description}
             />
           )}
         </div>
         <div className="card-body ">
           <p className="card-text">
-            <span className="font-weight-bold">{temp}°F</span>
+            <span className="font-weight-bold">{weather.main.temp}°F</span>
             <br />
-            {description}
+            {weather.weather.description}
           </p>
         </div>
       </div>

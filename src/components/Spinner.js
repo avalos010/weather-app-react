@@ -1,10 +1,22 @@
 import React from "react";
-import Loader from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 import "../styles/forecast.css";
 
 const Spinner = () => (
   <div className="loader-spinner">
-    <Loader type="TailSpin" color="#fff" height={100} width={80} />
+    <Oval
+      height={80}
+      width={80}
+      color="#4fa94d"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+      ariaLabel="oval-loading"
+      secondaryColor="#4fa94d"
+      strokeWidth={2}
+      strokeWidthSecondary={2}
+      className="loader-oval-spinner"
+    />
     <p>Loading Forecast...</p>
   </div>
 );

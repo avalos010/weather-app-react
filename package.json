@@ -4,10 +4,13 @@
   "homepage": "https://avalos010.github.io/weather-app-react",
   "private": true,
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-loader-spinner": "^2.3.0",
-    "react-router-dom": "^5.0.0",
+    "@tanstack/react-query": "^4.16.1",
+    "axios": "^1.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-router-dom": "^6.4.3",
+    "react-script": "^2.0.5",
     "react-scripts": "^3.0.0"
   },
   "scripts": {
@@ -25,9 +28,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-config-prettier": "^4.2.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "gh-pages": "^2.0.1",
-    "prettier": "^1.17.0"
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "gh-pages": "^4.0.0",
+    "prettier": "^2.7.1"
   }
 }
